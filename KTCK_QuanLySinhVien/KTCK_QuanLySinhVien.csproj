@@ -111,20 +111,24 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\SinhVienController.cs" />
+    <Compile Include="Model\LopHocPhan.cs" />
+    <Compile Include="Model\SinhVien.cs" />
+    <Compile Include="Model\ThoiKhoaBieu.cs" />
     <Compile Include="My Project\MyNamespace.Dynamic.Designer.cs" />
     <Compile Include="My Project\MyNamespace.Static.1.Designer.cs" />
     <Compile Include="My Project\MyNamespace.Static.2.Designer.cs" />
     <Compile Include="My Project\MyNamespace.Static.3.Designer.cs" />
-    <Compile Include="clsDataBaseAccess.cs" />
+    <Compile Include="Controller\clsDataBaseAccess.cs" />
     <Compile Include="dsSinhVien.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSinhVien.xsd</DependentUpon>
     </Compile>
-    <Compile Include="LopHocPhan.Designer.cs">
+    <Compile Include="View\LopHocPhan.Designer.cs">
       <DependentUpon>LopHocPhan.cs</DependentUpon>
     </Compile>
-    <Compile Include="LopHocPhan.cs">
+    <Compile Include="View\LopHocPhan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.cs" />
@@ -143,33 +147,33 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Sua.Designer.cs">
+    <Compile Include="View\Sua.Designer.cs">
       <DependentUpon>Sua.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sua.cs">
+    <Compile Include="View\Sua.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Them.Designer.cs">
+    <Compile Include="View\Them.Designer.cs">
       <DependentUpon>Them.cs</DependentUpon>
     </Compile>
-    <Compile Include="Them.cs">
+    <Compile Include="View\Them.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThoiKhoaBieu.Designer.cs">
+    <Compile Include="View\ThoiKhoaBieu.Designer.cs">
       <DependentUpon>ThoiKhoaBieu.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThoiKhoaBieu.cs">
+    <Compile Include="View\ThoiKhoaBieu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TrangChu.Designer.cs">
+    <Compile Include="View\TrangChu.Designer.cs">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </Compile>
-    <Compile Include="TrangChu.cs">
+    <Compile Include="View\TrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="LopHocPhan.resx">
+    <EmbeddedResource Include="View\LopHocPhan.resx">
       <DependentUpon>LopHocPhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
@@ -179,16 +183,16 @@
       <CustomToolNamespace>KTCK_QuanLySinhVien.My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sua.resx">
+    <EmbeddedResource Include="View\Sua.resx">
       <DependentUpon>Sua.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Them.resx">
+    <EmbeddedResource Include="View\Them.resx">
       <DependentUpon>Them.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThoiKhoaBieu.resx">
+    <EmbeddedResource Include="View\ThoiKhoaBieu.resx">
       <DependentUpon>ThoiKhoaBieu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TrangChu.resx">
+    <EmbeddedResource Include="View\TrangChu.resx">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -236,5 +240,6 @@
   <ItemGroup>
     <None Include="Resources\user_interface_ui_trash_bin_recycle_delete_icon_221223.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
