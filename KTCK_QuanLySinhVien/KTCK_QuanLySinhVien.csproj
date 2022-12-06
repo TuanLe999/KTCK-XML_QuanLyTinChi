@@ -223,6 +223,7 @@
     <None Include="Resources\logo trường.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LopHP.xml" />
     <Content Include="Resources\Icon1.ico" />
   </ItemGroup>
   <ItemGroup>
