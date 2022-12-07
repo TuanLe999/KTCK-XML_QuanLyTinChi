@@ -13,7 +13,7 @@ namespace KTCK_QuanLySinhVien.Controller
 {
     class XmlController
     {
-        string Conn = @"Data Source=LAPTOP-EAG0B02R\SQL1;Initial Catalog=QuanLySinhVien_TLTTQ;Integrated Security=True";
+        string Conn = @"Data Source=.;Initial Catalog=QuanLySinhVien_TLTTQ;Integrated Security=True";
         public DataTable HienThi(string duongDan)
         {
             DataTable dt = new DataTable();

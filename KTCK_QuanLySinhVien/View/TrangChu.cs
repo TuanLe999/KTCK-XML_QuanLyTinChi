@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using KTCK_QuanLySinhVien.Controller;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -11,6 +12,7 @@ namespace KTCK_QuanLySinhVien
 
         private DataBaseAccess _dbAccess = new DataBaseAccess();
         private bool _isLoading = false;
+        XmlController xmlController = new XmlController();
         
 
         public TrangChu()
@@ -51,8 +53,8 @@ namespace KTCK_QuanLySinhVien
         }
         public void loadDataOnGridView()
         {
-            string sqlQuery = string.Format("Select * from SinhVien ");
-            var dTable = _dbAccess.GetDataTable(sqlQuery);
+
+            var dTable = xmlController.HienThi("SinhVien.xml");
             dgvStudents.DataSource = dTable;
             {
                 var withBlock = dgvStudents;
@@ -70,7 +72,7 @@ namespace KTCK_QuanLySinhVien
         private void TrangChu_Load(object sender, EventArgs e)
         {
             _isLoading = true;
-            _dbAccess.CreateXmlFile("SinhVien");
+            xmlController.TaoXML("SinhVien");
             loadDataOnCombobox();
             loadDataOnGridView();
             Class_cbb.Text = "";
