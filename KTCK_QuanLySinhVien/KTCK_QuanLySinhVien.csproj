@@ -241,6 +241,8 @@
   <ItemGroup>
     <None Include="Resources\user_interface_ui_trash_bin_recycle_delete_icon_221223.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="XML\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

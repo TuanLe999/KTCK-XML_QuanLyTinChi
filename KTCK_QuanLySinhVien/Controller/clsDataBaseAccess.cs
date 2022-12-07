@@ -23,7 +23,7 @@ namespace KTCK_QuanLySinhVien
         // used to reconcile changes made to a 
         protected SqlCommandBuilder SqlComb;
 
-        private string ConnectionString = @"Data Source=LAPTOP-EAG0B02R\SQL1;Initial Catalog=QuanLySinhVien_TLTTQ;Integrated Security=True";
+        private string ConnectionString = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=QuanLySinhVien_TLTTQ;Integrated Security=True";
 
         // Purpose: Class constructor.
         public DataBaseAccess()
