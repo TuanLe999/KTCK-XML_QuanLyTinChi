@@ -8,5 +8,8 @@ namespace KTCK_QuanLySinhVien.Controller
 {
     class SinhVienController 
     {
+
     }
 }
+
+

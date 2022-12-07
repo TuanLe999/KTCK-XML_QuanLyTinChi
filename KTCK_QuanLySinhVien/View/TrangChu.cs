@@ -8,8 +8,10 @@ namespace KTCK_QuanLySinhVien
     public partial class TrangChu
     {
 
+
         private DataBaseAccess _dbAccess = new DataBaseAccess();
         private bool _isLoading = false;
+        
 
         public TrangChu()
         {
@@ -68,6 +70,7 @@ namespace KTCK_QuanLySinhVien
         private void TrangChu_Load(object sender, EventArgs e)
         {
             _isLoading = true;
+            _dbAccess.CreateXmlFile("SinhVien");
             loadDataOnCombobox();
             loadDataOnGridView();
             Class_cbb.Text = "";

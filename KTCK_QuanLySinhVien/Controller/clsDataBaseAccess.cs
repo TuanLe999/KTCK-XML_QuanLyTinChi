@@ -86,6 +86,21 @@ namespace KTCK_QuanLySinhVien
         // Purpose: ExecuteNoneQuery command
         // if SQL statement execute successful then return true else
         // occur exception retun false
+
+        public void CreateXmlFile(string bang)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string sql = "Select* from " + bang;
+            SqlDataAdapter ad = new SqlDataAdapter(sql, con);
+            DataTable dt = new DataTable("'" + bang + "'");
+            ad.Fill(dt);
+            dt.WriteXml(Application.StartupPath + "\\" + bang + ".xml", XmlWriteMode.WriteSchema);
+
+            
+        }
+
+
         public bool ExecuteNoneQuery(string v_sSqlString, bool ShowErrorMessage = false)
         {
             if (OpenConnection())
