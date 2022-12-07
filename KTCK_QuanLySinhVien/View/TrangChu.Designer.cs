@@ -54,8 +54,12 @@ namespace KTCK_QuanLySinhVien
             this.lamMoi_btn = new System.Windows.Forms.Button();
             this.tkb_btn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.upLoad_btn = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dowload_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.Panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvStudents
@@ -277,7 +281,7 @@ namespace KTCK_QuanLySinhVien
             this.tkb_btn.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tkb_btn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.tkb_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tkb_btn.Location = new System.Drawing.Point(648, 547);
+            this.tkb_btn.Location = new System.Drawing.Point(633, 420);
             this.tkb_btn.Margin = new System.Windows.Forms.Padding(2);
             this.tkb_btn.Name = "tkb_btn";
             this.tkb_btn.Size = new System.Drawing.Size(142, 48);
@@ -288,17 +292,70 @@ namespace KTCK_QuanLySinhVien
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.upLoad_btn);
+            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.dowload_btn);
+            this.panel3.Controls.Add(this.tkb_btn);
             this.panel3.Location = new System.Drawing.Point(13, 127);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(880, 534);
+            this.panel3.Size = new System.Drawing.Size(880, 573);
             this.panel3.TabIndex = 49;
+            // 
+            // upLoad_btn
+            // 
+            this.upLoad_btn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.upLoad_btn.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upLoad_btn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.upLoad_btn.Image = global::KTCK_QuanLySinhVien.My.Resources.Resources.ic_cloud_upload_128_28296;
+            this.upLoad_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.upLoad_btn.Location = new System.Drawing.Point(467, 498);
+            this.upLoad_btn.Margin = new System.Windows.Forms.Padding(2);
+            this.upLoad_btn.Name = "upLoad_btn";
+            this.upLoad_btn.Size = new System.Drawing.Size(222, 48);
+            this.upLoad_btn.TabIndex = 50;
+            this.upLoad_btn.Text = "Lưu trữ dữ liệu lên Database";
+            this.upLoad_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.upLoad_btn.UseVisualStyleBackColor = false;
+            this.upLoad_btn.Click += new System.EventHandler(this.upLoad_btn_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.button2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(387, 262);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 48);
+            this.button2.TabIndex = 51;
+            this.button2.Text = "Thêm mới";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // dowload_btn
+            // 
+            this.dowload_btn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.dowload_btn.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dowload_btn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dowload_btn.Image = global::KTCK_QuanLySinhVien.My.Resources.Resources.macos_big_sur_download_folder_icon_186042__1_;
+            this.dowload_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dowload_btn.Location = new System.Drawing.Point(200, 498);
+            this.dowload_btn.Margin = new System.Windows.Forms.Padding(2);
+            this.dowload_btn.Name = "dowload_btn";
+            this.dowload_btn.Size = new System.Drawing.Size(192, 48);
+            this.dowload_btn.TabIndex = 50;
+            this.dowload_btn.Text = "Tải dữ liệu từ Database";
+            this.dowload_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.dowload_btn.UseVisualStyleBackColor = false;
+            this.dowload_btn.Click += new System.EventHandler(this.button1_Click);
             // 
             // TrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 673);
-            this.Controls.Add(this.tkb_btn);
+            this.ClientSize = new System.Drawing.Size(905, 734);
             this.Controls.Add(this.lamMoi_btn);
             this.Controls.Add(this.txt_timKiem);
             this.Controls.Add(this.cbb_timKiem);
@@ -319,6 +376,7 @@ namespace KTCK_QuanLySinhVien
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,5 +400,8 @@ namespace KTCK_QuanLySinhVien
         internal Button lamMoi_btn;
         internal Button tkb_btn;
         private Panel panel3;
+        internal Button upLoad_btn;
+        internal Button button2;
+        internal Button dowload_btn;
     }
 }

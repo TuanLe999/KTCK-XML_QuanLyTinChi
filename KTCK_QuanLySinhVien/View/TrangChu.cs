@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.IO;
 using System.Windows.Forms;
 using KTCK_QuanLySinhVien.Controller;
 using Microsoft.VisualBasic;
@@ -13,7 +15,8 @@ namespace KTCK_QuanLySinhVien
         private DataBaseAccess _dbAccess = new DataBaseAccess();
         private bool _isLoading = false;
         XmlController xmlController = new XmlController();
-        
+        SinhVienController sinhVienController = new SinhVienController();
+
 
         public TrangChu()
         {
@@ -27,8 +30,8 @@ namespace KTCK_QuanLySinhVien
 
         public void loadDataOnCombobox()
         {
-            string sql = "Select * from dbo.Lop";
-            var dTable = _dbAccess.GetDataTable(sql);
+            xmlController.TaoXML("Lop");
+            var dTable = xmlController.HienThi("Lop.xml");
             Class_cbb.DataSource = dTable;
             Class_cbb.ValueMember = "TenLop";
             Class_cbb.DisplayMember = "TenLop";
@@ -36,9 +39,17 @@ namespace KTCK_QuanLySinhVien
 
         private void loadDataOnGridView(string tenLop)
         {
-            string sqlQuery = string.Format("Select * from SinhVien where Lop = '" + tenLop + "'");
-            var dTable = _dbAccess.GetDataTable(sqlQuery);
-            dgvStudents.DataSource = dTable;
+            
+            var dTable = xmlController.HienThi("SinhVien.xml");
+            DataTable tb = dTable.Clone();
+            foreach (DataRow row in dTable.Rows)
+            {
+                if (row.Field<String>("Lop").Equals(tenLop))
+
+                    tb.ImportRow(row);
+            }
+
+            dgvStudents.DataSource = tb;
             {
                 var withBlock = dgvStudents;
                 withBlock.Columns[0].HeaderText = "Mã sinh viên";
@@ -72,7 +83,14 @@ namespace KTCK_QuanLySinhVien
         private void TrangChu_Load(object sender, EventArgs e)
         {
             _isLoading = true;
-            xmlController.TaoXML("SinhVien");
+
+            string FilePath = Application.StartupPath + "\\SinhVien.xml";
+            if (!File.Exists(FilePath))
+            {
+                xmlController.TaoXML("SinhVien");
+            }
+
+            xmlController.TaoXML("Lop");
             loadDataOnCombobox();
             loadDataOnGridView();
             Class_cbb.Text = "";
@@ -96,18 +114,13 @@ namespace KTCK_QuanLySinhVien
             // Khai bao bien lay StudentID ma dong can xoa da duoc chon tren gridview
             string MSV = Conversions.ToString(dgvStudents.Rows[dgvStudents.CurrentCell.RowIndex].Cells["MSV"].Value);
             // Khai bao cau lenh Query de xoa
-            string sqlQuery = string.Format("DELETE from SinhVien WHERE MSV='{0}'", MSV);
+            sinhVienController.XoaSV(MSV);
             // Thuc hien xoa
-            if (_dbAccess.ExecuteNoneQuery(sqlQuery)) // Xoa thanh cong thi thong bao
-            {
-                MessageBox.Show("Xóa thành công!");
-                // Load lai du lieu tren Gridview
-                loadDataOnGridView();
-            }
-            else
-            {
-                MessageBox.Show("Xóa thất bại!");
-            }
+
+            MessageBox.Show("Xóa thành công!");
+            // Load lai du lieu tren Gridview
+            loadDataOnGridView();
+
         }
 
         private void them_btn_Click(object sender, EventArgs e)
@@ -177,9 +190,17 @@ namespace KTCK_QuanLySinhVien
 
         private void timKiem(string column, string value)
         {
-            string sqlQuery = string.Format("Select * from SinhVien where " + column + " like N'%" + value + "%'");
-            var dTable = _dbAccess.GetDataTable(sqlQuery);
-            dgvStudents.DataSource = dTable;
+            
+            var dTable = xmlController.HienThi("SinhVien.xml");
+            DataTable tb = dTable.Clone();
+            foreach (DataRow row in dTable.Rows)
+            {
+                if (row.Field<String>(column).Contains(value))
+
+                    tb.ImportRow(row);
+            }
+
+            dgvStudents.DataSource = tb;
             {
                 var withBlock = dgvStudents;
                 withBlock.Columns[0].HeaderText = "Mã sinh viên";
@@ -195,9 +216,15 @@ namespace KTCK_QuanLySinhVien
 
         private void timKiem(string column, string value, string lop)
         {
-            string sqlQuery = string.Format("Select * from SinhVien where " + column + " like N'%" + value + "%' and Lop = '" + lop + "'");
-            var dTable = _dbAccess.GetDataTable(sqlQuery);
-            dgvStudents.DataSource = dTable;
+            var dTable = xmlController.HienThi("SinhVien.xml");
+            DataTable tb = dTable.Clone();
+            foreach (DataRow row in dTable.Rows)
+            {
+                if (row.Field<String>(""+column+"").Contains(value)&& row.Field<String>("Lop").Contains(lop))
+
+                    tb.ImportRow(row);
+            }
+            dgvStudents.DataSource = tb;
             {
                 var withBlock = dgvStudents;
                 withBlock.Columns[0].HeaderText = "Mã sinh viên";
@@ -224,6 +251,24 @@ namespace KTCK_QuanLySinhVien
             tkbForm.ShowDialog();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            xmlController.TaoXML("SinhVien");
+            xmlController.TaoXML("LopHP");
+            xmlController.TaoXML("Lop");
+            xmlController.TaoXML("ThoiKhoaBieu");
+            MessageBox.Show("Tải dữ liệu thành công!");
 
+
+        }
+
+        private void upLoad_btn_Click(object sender, EventArgs e)
+        {
+            xmlController.CapNhapTungBang("SinhVien");
+            xmlController.CapNhapTungBang("Lop");
+            xmlController.CapNhapTungBang("ThoiKhoaBieu");
+            xmlController.CapNhapTungBang("LopHp");
+            MessageBox.Show("Sao lưu dữ liệu thành công!");
+        }
     }
 }

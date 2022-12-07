@@ -21,18 +21,10 @@
     </xs:element>
   </xs:schema>
   <_x0027_SinhVien_x0027_>
-    <MSV>2050531200311</MSV>
-    <Ten>Lê Hoàng </Ten>
-    <Lop>20T1</Lop>
-    <GioiTinh>Nam</GioiTinh>
-    <SDT>0917480604</SDT>
-    <Email>20505312003211@sv.ute.udn.vn</Email>
-  </_x0027_SinhVien_x0027_>
-  <_x0027_SinhVien_x0027_>
     <MSV>2050531200317</MSV>
     <Ten>Trần Anh Tuấn</Ten>
     <Lop>20T3</Lop>
-    <GioiTinh>Nam</GioiTinh>
+    <GioiTinh>Nữ</GioiTinh>
     <SDT>0918880604</SDT>
     <Email>2050531200317@sv.ute.udn.vn</Email>
   </_x0027_SinhVien_x0027_>

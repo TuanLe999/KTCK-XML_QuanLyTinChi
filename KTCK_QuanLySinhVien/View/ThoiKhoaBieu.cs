@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Windows.Forms;
+using KTCK_QuanLySinhVien.Controller;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -8,6 +12,7 @@ namespace KTCK_QuanLySinhVien
     public partial class ThoiKhoaBieu
     {
         private DataBaseAccess _dbAccess = new DataBaseAccess();
+        XmlController xmlConTroller = new XmlController();
 
         public ThoiKhoaBieu()
         {
@@ -20,10 +25,40 @@ namespace KTCK_QuanLySinhVien
 
         private void loadDataOnGridView()
         {
-            string sqlQuery = string.Format(@"SELECT  MaHP, TenHP,GiaoVien,SoTC,Thu,TietBatDau,TietKetThuc  FROM dbo.LopHP
- WHERE MaHP IN (SELECT MaHP FROM dbo.ThoiKhoaBieu WHERE dbo.ThoiKhoaBieu.MSV ='" + msv_label.Text + "' ) ORDER BY Thu ");
-            var dTable = _dbAccess.GetDataTable(sqlQuery);
-            TKB_dgv.DataSource = dTable;
+
+            if (!File.Exists(Application.StartupPath + "\\ThoiKhoaBieu.xml"))
+            {
+                xmlConTroller.TaoXML("ThoiKhoaBieu");
+            }
+            if (!File.Exists(Application.StartupPath + "\\LopHP.xml"))
+            {
+                xmlConTroller.TaoXML("LopHP");
+            }
+
+            var dtTkb = xmlConTroller.HienThi("ThoiKhoaBieu.xml");
+            var dtLhp = xmlConTroller.HienThi("LopHP.xml");
+
+            DataTable tb = dtLhp.Clone();
+            List<String> hp = new List<string>();
+            foreach (DataRow row in dtTkb.Rows)
+            {
+                var value = row["MSV"].ToString();
+                if (row["MSV"].ToString().Equals(msv_label.Text.ToString()))
+                {
+                    hp.Add(row.Field<String>("MaHP"));
+                }
+            }
+
+            foreach (DataRow row in dtLhp.Rows)
+            {
+                if (hp.Contains(row.Field<String>("MaHp")))
+                {
+                    tb.ImportRow(row);
+                }
+            }
+
+
+            TKB_dgv.DataSource = tb;
             {
                 var withBlock = TKB_dgv;
                 withBlock.Columns[0].HeaderText = "Mã học phần";
@@ -40,12 +75,18 @@ namespace KTCK_QuanLySinhVien
             }
             string sql2 = @"SELECT COUNT(DISTINCT MaHP)  FROM dbo.LopHP
  WHERE MaHP IN (SELECT MaHP FROM dbo.ThoiKhoaBieu WHERE dbo.ThoiKhoaBieu.MSV ='" + msv_label.Text + "' )";
-            sl_label.Text = _dbAccess.GetScalar(sql2).ToString();
 
 
-            string sql3 = @"SELECT SUM(SoTC)  FROM dbo.LopHP
- WHERE MaHP IN (SELECT MaHP FROM dbo.ThoiKhoaBieu WHERE dbo.ThoiKhoaBieu.MSV ='" + msv_label.Text + "' )";
-            Tc_label.Text = _dbAccess.GetScalar(sql3).ToString();
+            sl_label.Text = tb.Rows.Count.ToString();
+
+
+            int tc = 0;
+            foreach (DataRow row in tb.Rows)
+            {
+                tc += row.Field<Int32>("SoTC");
+
+            }
+            Tc_label.Text = tc.ToString();
         }
 
         private void dkHP_btn_Click(object sender, EventArgs e)
@@ -94,16 +135,12 @@ namespace KTCK_QuanLySinhVien
         private void huyHP()
         {
             string MaHP = Conversions.ToString(TKB_dgv.Rows[TKB_dgv.CurrentCell.RowIndex].Cells["MaHP"].Value);
-            string sql = " DELETE FROM dbo.ThoiKhoaBieu WHERE ( MSV='" + msv_label.Text + "' AND MaHP='" + MaHP + "')";
-            if (_dbAccess.ExecuteNoneQuery(sql))
-            {
-                MessageBox.Show("Hủy học phần thành công!");
-                loadDataOnGridView();
-            }
-            else
-            {
-                MessageBox.Show("Hủy học phần thất bại!");
-            }
+            xmlConTroller.Xoa("ThoiKhoaBieu.xml", "_x0027_ThoiKhoaBieu_x0027_", "MSV", msv_label.Text, "MaHP", MaHP);
+
+            MessageBox.Show("Hủy học phần thành công!");
+            loadDataOnGridView();
+
+
 
         }
     }

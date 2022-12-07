@@ -1,0 +1,114 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="_x0027_LopHP_x0027_" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="_x0027_LopHP_x0027_">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="MaHP" type="xs:string" minOccurs="0" />
+                <xs:element name="TenHP" type="xs:string" minOccurs="0" />
+                <xs:element name="GiaoVien" type="xs:string" minOccurs="0" />
+                <xs:element name="SoTC" type="xs:int" minOccurs="0" />
+                <xs:element name="Thu" type="xs:string" minOccurs="0" />
+                <xs:element name="TietBatDau" type="xs:string" minOccurs="0" />
+                <xs:element name="TietKetThuc" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <_x0027_LopHP_x0027_>
+    <MaHP>221BTMTQ01</MaHP>
+    <TenHP>Bảo trì máy tính</TenHP>
+    <GiaoVien>Lê Vũ</GiaoVien>
+    <SoTC>3</SoTC>
+    <Thu>3</Thu>
+    <TietBatDau>7</TietBatDau>
+    <TietKetThuc>8</TietKetThuc>
+  </_x0027_LopHP_x0027_>
+  <_x0027_LopHP_x0027_>
+    <MaHP>221CDPM01</MaHP>
+    <TenHP>Chuyên đề phần mềm</TenHP>
+    <GiaoVien>Phạm Tuấn</GiaoVien>
+    <SoTC>3</SoTC>
+    <Thu>6</Thu>
+    <TietBatDau>9</TietBatDau>
+    <TietKetThuc>11</TietKetThuc>
+  </_x0027_LopHP_x0027_>
+  <_x0027_LopHP_x0027_>
+    <MaHP>221GDTCI01</MaHP>
+    <TenHP>Giáo dục thể chất 1</TenHP>
+    <GiaoVien>Trần Lực</GiaoVien>
+    <SoTC>2</SoTC>
+    <Thu>2</Thu>
+    <TietBatDau>1</TietBatDau>
+    <TietKetThuc>2</TietKetThuc>
+  </_x0027_LopHP_x0027_>
+  <_x0027_LopHP_x0027_>
+    <MaHP>221HDH02</MaHP>
+    <TenHP>Hệ điều hành</TenHP>
+    <GiaoVien>Đoàn Duy Bình</GiaoVien>
+    <SoTC>3</SoTC>
+    <Thu>6</Thu>
+    <TietBatDau>10</TietBatDau>
+    <TietKetThuc>11</TietKetThuc>
+  </_x0027_LopHP_x0027_>
+  <_x0027_LopHP_x0027_>
+    <MaHP>221LJNC01</MaHP>
+    <TenHP>Lập trình Java nâng cao</TenHP>
+    <GiaoVien>Đỗ Phú Huy</GiaoVien>
+    <SoTC>3</SoTC>
+    <Thu>6</Thu>
+    <TietBatDau>1</TietBatDau>
+    <TietKetThuc>2</TietKetThuc>
+  </_x0027_LopHP_x0027_>
+  <_x0027_LopHP_x0027_>
+    <MaHP>221LTC02</MaHP>
+    <TenHP>Lập trình C#</TenHP>
+    <GiaoVien>Đỗ Phú Huy</GiaoVien>
+    <SoTC>3</SoTC>
+    <Thu>3</Thu>
+    <TietBatDau>1</TietBatDau>
+    <TietKetThuc>2</TietKetThuc>
+  </_x0027_LopHP_x0027_>
+  <_x0027_LopHP_x0027_>
+    <MaHP>221LTDT01</MaHP>
+    <TenHP>Lý thuyết đồ thị</TenHP>
+    <GiaoVien>Phan Huy Khánh</GiaoVien>
+    <SoTC>2</SoTC>
+    <Thu>5</Thu>
+    <TietBatDau>1</TietBatDau>
+    <TietKetThuc>2</TietKetThuc>
+  </_x0027_LopHP_x0027_>
+  <_x0027_LopHP_x0027_>
+    <MaHP>221NNCNC01</MaHP>
+    <TenHP>Ngoại ngữ chuyên ngành CNTT</TenHP>
+    <GiaoVien>Võ Trung Hùng</GiaoVien>
+    <SoTC>3</SoTC>
+    <Thu>5</Thu>
+    <TietBatDau>9</TietBatDau>
+    <TietKetThuc>11</TietKetThuc>
+  </_x0027_LopHP_x0027_>
+  <_x0027_LopHP_x0027_>
+    <MaHP>221TLJNC01</MaHP>
+    <TenHP>Thực hành lập trình Java nâng cao</TenHP>
+    <GiaoVien>Lê Nhật Thiện Quang</GiaoVien>
+    <SoTC>1</SoTC>
+    <Thu>6</Thu>
+    <TietBatDau>7</TietBatDau>
+    <TietKetThuc>8</TietKetThuc>
+  </_x0027_LopHP_x0027_>
+  <_x0027_LopHP_x0027_>
+    <MaHP>221TLTTQ01</MaHP>
+    <TenHP>Thực hành lập trình trực quan</TenHP>
+    <GiaoVien>Nguyễn Thị Thùy Trang</GiaoVien>
+    <SoTC>1</SoTC>
+    <Thu>2</Thu>
+    <TietBatDau>7</TietBatDau>
+    <TietKetThuc>8</TietKetThuc>
+  </_x0027_LopHP_x0027_>
+</NewDataSet>

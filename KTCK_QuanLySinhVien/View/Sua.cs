@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using KTCK_QuanLySinhVien.Controller;
 using Microsoft.VisualBasic;
 
 namespace KTCK_QuanLySinhVien
@@ -8,6 +9,8 @@ namespace KTCK_QuanLySinhVien
     {
         private DataBaseAccess _dbAccess = new DataBaseAccess();
 
+
+        SinhVienController sinhVienController = new SinhVienController();
         public Sua()
         {
             InitializeComponent();
@@ -32,11 +35,11 @@ namespace KTCK_QuanLySinhVien
 
             }
         }
-        private bool sua()
+        private void sua()
         {
-            string sqlQuery = "update SinhVien set Ten = N'" + name_TextBox.Text + "',Lop = '" + class_cbb.Text + "',GioiTinh=N'" + GenderComboBox.Text + "',SDT='" + phone_TextBox.Text + @"'
-                    ,Email=N'" + email_TextBox.Text + "' where MSV = '" + msv_txt.Text + "'";
-            return _dbAccess.ExecuteNoneQuery(sqlQuery);
+            
+            sinhVienController.SuaSV(msv_txt.Text, name_TextBox.Text, class_cbb.Text, GenderComboBox.Text, phone_TextBox.Text, email_TextBox.Text);
+
         }
 
         private void class_cbb_MouseClick(object sender, MouseEventArgs e)

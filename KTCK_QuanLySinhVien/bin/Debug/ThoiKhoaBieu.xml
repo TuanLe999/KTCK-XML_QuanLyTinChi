@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="_x0027_ThoiKhoaBieu_x0027_" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="_x0027_ThoiKhoaBieu_x0027_">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="MSV" type="xs:string" minOccurs="0" />
+                <xs:element name="MaHP" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <_x0027_ThoiKhoaBieu_x0027_>
+    <MSV>2050531200317</MSV>
+    <MaHP>221LJNC01</MaHP>
+  </_x0027_ThoiKhoaBieu_x0027_>
+  <_x0027_ThoiKhoaBieu_x0027_>
+    <MSV>2050531200317</MSV>
+    <MaHP>221CDPM01</MaHP>
+  </_x0027_ThoiKhoaBieu_x0027_>
+  <_x0027_ThoiKhoaBieu_x0027_>
+    <MSV>2050531200317</MSV>
+    <MaHP>221LTDT01</MaHP>
+  </_x0027_ThoiKhoaBieu_x0027_>
+</NewDataSet>

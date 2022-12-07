@@ -65,6 +65,16 @@ namespace KTCK_QuanLySinhVien.Controller
             doc.Save(fileName);
         }
 
+         public void Xoa(string duongDan, string tenFileXML, string xoaTheoTruong1, string giaTriTruong1, string xoaTheoTruong2, string giaTriTruong2)
+        {
+            string fileName = Application.StartupPath + "\\" + duongDan;
+            XmlDocument doc = new XmlDocument();
+            doc.Load(fileName);
+            XmlNode nodeCu = doc.SelectSingleNode("NewDataSet/" + tenFileXML + "[" + xoaTheoTruong1 + "='" + giaTriTruong1 + "' and " + xoaTheoTruong2 + "='" + giaTriTruong2 + "']");
+            doc.DocumentElement.RemoveChild(nodeCu);
+            doc.Save(fileName);
+        }
+
         public void Sua(string duongDan, string tenFile, string suaTheoTruong, string giaTriTruong, string noiDung)
         {
 
@@ -114,6 +124,25 @@ namespace KTCK_QuanLySinhVien.Controller
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
+        }
+
+        public void CapNhapTungBang(string tenBang)
+        {
+            InsertOrUpDateSQL("delete from "+tenBang+"");
+            string duongDan = @"" + tenBang + ".xml";
+            DataTable table = HienThi(duongDan);
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                string sql = "insert into " + tenBang + " values(";
+                for (int j = 0; j < table.Columns.Count - 1; j++)
+                {
+                    sql += "N'" + table.Rows[i][j].ToString().Trim() + "',";
+                }
+                sql += "N'" + table.Rows[i][table.Columns.Count - 1].ToString().Trim() + "'";
+                sql += ")";
+                //MessageBox.Show(sql);
+                InsertOrUpDateSQL(sql);
+            }
         }
     }
 }

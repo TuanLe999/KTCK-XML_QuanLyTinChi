@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
+using KTCK_QuanLySinhVien.Controller;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -10,6 +13,9 @@ namespace KTCK_QuanLySinhVien
         private DataBaseAccess _dbAccess = new DataBaseAccess();
         public string msv;
         public string ten;
+
+        XmlController xmlController = new XmlController();
+        ThoiKhoaBieuController tkbController = new ThoiKhoaBieuController();
 
         public LopHocPhan()
         {
@@ -31,9 +37,29 @@ namespace KTCK_QuanLySinhVien
 
         public void loadDataOnGridView()
         {
-            string sqlQuery = string.Format("SELECT * FROM dbo.LopHP WHERE MaHP NOT IN (SELECT MaHP FROM dbo.ThoiKhoaBieu WHERE dbo.ThoiKhoaBieu.MSV = '" + msv + "') ORDER BY Thu ");
-            var dTable = _dbAccess.GetDataTable(sqlQuery);
-            HP_dgv.DataSource = dTable;
+
+            var dtTkb = xmlController.HienThi("ThoiKhoaBieu.xml");
+            var dtLhp = xmlController.HienThi("LopHP.xml");
+
+            DataTable tb = dtLhp.Clone();
+            List<String> hp = new List<string>();
+            foreach (DataRow row in dtTkb.Rows)
+            {
+                var value = row["MSV"].ToString();
+                if (row["MSV"].ToString().Equals(msv))
+                {
+                    hp.Add(row.Field<String>("MaHP"));
+                }
+            }
+
+            foreach (DataRow row in dtLhp.Rows)
+            {
+                if (!hp.Contains(row.Field<String>("MaHp")))
+                {
+                    tb.ImportRow(row);
+                }
+            }
+            HP_dgv.DataSource = tb;
             {
                 var withBlock = HP_dgv;
                 withBlock.Columns[0].HeaderText = "Mã học phần";
@@ -53,8 +79,29 @@ namespace KTCK_QuanLySinhVien
 
         private void check()
         {
-            string sql = " SELECT COUNT(DISTINCT MaHP) FROM dbo.LopHP WHERE MaHP NOT IN (SELECT MaHP FROM dbo.ThoiKhoaBieu WHERE dbo.ThoiKhoaBieu.MSV = '" + msv + "')";
-            int a = Conversions.ToInteger(_dbAccess.GetScalar(sql).ToString());
+            var dtTkb = xmlController.HienThi("ThoiKhoaBieu.xml");
+            var dtLhp = xmlController.HienThi("LopHP.xml");
+
+            DataTable tb = dtLhp.Clone();
+            List<String> hp = new List<string>();
+            foreach (DataRow row in dtTkb.Rows)
+            {
+                var value = row["MSV"].ToString();
+                if (row["MSV"].ToString().Equals(msv))
+                {
+                    hp.Add(row.Field<String>("MaHP"));
+                }
+            }
+
+            foreach (DataRow row in dtLhp.Rows)
+            {
+                if (!hp.Contains(row.Field<String>("MaHp")))
+                {
+                    tb.ImportRow(row);
+                }
+            }
+
+            int a = tb.Rows.Count;
             if (a == 0)
             {
                 Interaction.MsgBox("Không còn học phần nào để đăng ký! ");
@@ -76,18 +123,13 @@ namespace KTCK_QuanLySinhVien
             // Khai bao bien lay StudentID ma dong can xoa da duoc chon tren gridview
             string MaHP = Conversions.ToString(HP_dgv.Rows[HP_dgv.CurrentCell.RowIndex].Cells["MaHP"].Value);
             // Khai bao cau lenh Query de xoa
-            string sqlQuery = string.Format("Insert into ThoiKhoaBieu values ('" + msv + "','" + MaHP + "') ");
+            tkbController.DkHocPhan(msv, MaHP);
             // Thuc hien xoa
-            if (_dbAccess.ExecuteNoneQuery(sqlQuery)) // 
-            {
-                MessageBox.Show("Đăng ký  thành công!");
-                // Load lai du lieu tren Gridview
-                loadDataOnGridView();
-            }
-            else
-            {
-                MessageBox.Show("Đăng ký thất bại!");
-            }
+
+            MessageBox.Show("Đăng ký thành công!");
+
+            loadDataOnGridView();
+
         }
 
         private void quayLai_btn_Click(object sender, EventArgs e)

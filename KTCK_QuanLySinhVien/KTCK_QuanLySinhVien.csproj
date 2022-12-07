@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\SinhVienController.cs" />
+    <Compile Include="Controller\ThoiKhoaBieuController.cs" />
     <Compile Include="Controller\XmlController.cs" />
     <Compile Include="Model\LopHocPhan.cs" />
     <Compile Include="Model\SinhVien.cs" />
@@ -225,6 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Icon1.ico" />
+    <None Include="Resources\macos_big_sur_download_folder_icon_186042.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconfinder-trash-4341321_120557 %281%29.ico" />

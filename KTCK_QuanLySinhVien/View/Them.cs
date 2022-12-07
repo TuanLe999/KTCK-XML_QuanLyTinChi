@@ -1,4 +1,5 @@
 ﻿using System;
+using KTCK_QuanLySinhVien.Controller;
 using Microsoft.VisualBasic;
 
 namespace KTCK_QuanLySinhVien
@@ -7,7 +8,7 @@ namespace KTCK_QuanLySinhVien
     {
 
         private DataBaseAccess _dbAccess = new DataBaseAccess();
-
+        SinhVienController sinhVienController = new SinhVienController();
         public Them()
         {
             InitializeComponent();
@@ -23,8 +24,9 @@ namespace KTCK_QuanLySinhVien
                 try
                 {
 
-                    string sql = "INSERT INTO [SinhVien] VALUES ('" + msv_txt.Text + "',N'" + name_TextBox.Text + "','" + class_cbb.Text + "',N'" + GenderComboBox.Text + "','" + phone_TextBox.Text + "','" + email_TextBox.Text + "')";
-                    bool result = _dbAccess.ExecuteNoneQuery(sql);
+
+                    sinhVienController.ThemSV(msv_txt.Text, name_TextBox.Text, class_cbb.Text, GenderComboBox.Text, phone_TextBox.Text, email_TextBox.Text);
+
                 }
 
                 catch (Exception ex)
